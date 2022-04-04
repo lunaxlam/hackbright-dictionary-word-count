@@ -1,41 +1,49 @@
 """Count words in file."""
 
 def count_words(filename):
-    #input: text, output: dictionary {'word': number}
-    """Returns a dictionary with counted words."""
+    """
+    Prints a dictionary summary with counted words.
+    
+    :param filename: text file
+    :return: None
+    """
 
-    #initialize empty dictionary 
+    # Initialize an empty dictionary
     word_count = {}
 
-    #open file
+    # Open text file and store as a file object
     text_file = open(filename)
 
-    ### METHOD 1:
-    # #create a list to store all words
-    # list_of_words = []
 
-    #use for loop to iterate over text file
+    ### METHOD 1:
     for line in text_file:
         words = line.strip().split(" ")
-        ### METHOD 1 (cont.)
-        # list_of_words.extend(words)
 
-        ### METHOD 2
         for word in words:
             word_count[word] = word_count.get(word,0) + 1
 
-    ### METHOD 1 (cont.)
-    # #iterate over list of words to count words
+    ### METHOD 2:
+    # # Initialize an empty list to store list of words from file
+    # list_of_words = []
+
+    # # Iterate through each line in file
+    # for line in text_file:
+    #     # Tokenize each line to individual words, use " " as delimiter
+    #     words = line.strip().split(" ")
+    #     # Add words to list_of_words by tokenizing each element in words
+    #     list_of_words.extend(words)
+ 
+    # # Iterate over list of words to update membership and count in dictionary
     # for word in list_of_words:
-    #     #if word exists as a key in dictionary
+    #     # If word exists as a key in dictionary, increment by 1
     #     if word in word_count:
-    #         #add 1 to value
     #         word_count[word] += 1
-    #     #else create a key and set value to 1
+    #     # Else initialize a new key and set value to 1
     #     else:
     #         word_count[word] = 1
 
-    #return dictionary
-    return word_count
+    for word, count in word_count.items():
+        print(f"{word}: {count}")
+
 
 print(count_words("test.txt"))
