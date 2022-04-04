@@ -2,7 +2,7 @@
 
 def count_words(filename):
     """
-    Prints a dictionary summary with counted words.
+    Print a dictionary summary with counted words.
     
     :param filename: text file
     :return: None
@@ -20,7 +20,11 @@ def count_words(filename):
         words = line.strip().split(" ")
 
         for word in words:
-            word_count[word] = word_count.get(word,0) + 1
+            for char in words:
+                no_punctuation = ""
+                if char.isalpha():
+                    no_punctuation += char
+                word_count[no_punctuation] = word_count.get(word,0) + 1
 
     ### METHOD 2:
     # # Initialize an empty list to store list of words from file
