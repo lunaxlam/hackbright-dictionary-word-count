@@ -11,9 +11,14 @@ def tokenize(filename):
     # Open text file and store as a file object
     text_file = open(filename)
 
+    # Initialize an empty list of words to store all words from text file
+    list_of_words = []
+
     for line in text_file:
-        list_of_words = line.strip().split(" ")
-    
+        words = line.strip().split(" ")
+        # Tokenize the list of words and add to list_of_words list
+        list_of_words.extend(words)
+
     return list_of_words
 
 def count_words(list_of_words):
@@ -51,3 +56,6 @@ def print_word_counts(word_count):
     # Iterate through the dictionary and print the key, value 
     for word, count in word_count.items():
         print(f"{word}: {count}")
+
+
+print_word_counts(count_words(tokenize("test.txt")))
