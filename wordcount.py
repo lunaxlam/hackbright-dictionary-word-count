@@ -20,11 +20,12 @@ def count_words(filename):
         words = line.strip().split(" ")
 
         for word in words:
-            for char in words:
-                no_punctuation = ""
+            word = word.lower()
+            no_punctuation = ""
+            for char in word:
                 if char.isalpha():
                     no_punctuation += char
-                word_count[no_punctuation] = word_count.get(word,0) + 1
+            word_count[no_punctuation] = word_count.get(word,0) + 1
 
     ### METHOD 2:
     # # Initialize an empty list to store list of words from file
